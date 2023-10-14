@@ -23,7 +23,6 @@
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MonoGame.Content.Builder.Task.Compute" Version="3.8.2" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
@@ -57,13 +56,5 @@
     <Message Text="Restoring dotnet tools" Importance="High" />
     <Exec Command="dotnet tool restore" />
   </Target>
-	<!--
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy /S /Y /D ..\Content\* .\" />
-		<Exec Command="..\..\..\..\MonoGame\Artifacts\MonoGame.Content.Builder\Debug\mgcb.exe /platform:DesktopGL /config: .\Content\Content.mgcb /profile:Reach /compress:False /processorParam:DebugMode=Auto /intermediateDir:.\Content\obj\DesktopGL\net7.0\Content /outputDir:.\Content\bin\DesktopGL\Content" />
-		<Exec Command="xcopy /S /Y /D .\Content\bin\DesktopGL\Content\Content\*  .\bin\Debug\net7.0\Content\" />
-		<Exec Command="xcopy /S /Y /D .\Content\bin\DesktopGL\Content\Content\*  ..\..\..\RogueProto-Agnostic\bin\Debug\net7.0\Content" />
-	</Target>
-    -->
 
-	</Project>
+</Project>
