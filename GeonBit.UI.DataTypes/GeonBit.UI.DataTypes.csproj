@@ -13,9 +13,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.DesktopGL.csproj" />
   </ItemGroup>
-
+<!--
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy /Y &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(SolutionDir)\modules\GeonBit.UI\Content\$(ProjectName).dll&quot;" />
+	<Exec Command="copy /Y &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(SolutionDir)\RogueProto-Agnostic-Content\Content\$(ProjectName).dll&quot;" />
   </Target>
-
+-->
 </Project>
