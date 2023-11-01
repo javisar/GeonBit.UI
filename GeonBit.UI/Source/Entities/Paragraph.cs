@@ -19,6 +19,8 @@ using GeonBit.UI.DataTypes;
 using System.Text;
 using SkiaTextRenderer;
 using MonoMSDF;
+using RogueProto_Agnostic.Engine;
+using ImGuiNET;
 
 namespace GeonBit.UI.Entities
 {
@@ -547,23 +549,40 @@ namespace GeonBit.UI.Entities
         /// 
         override protected void DrawEntity(SpriteBatch spriteBatch, DrawPhase phase)
         {
-            DrawEntity_Vanilla(spriteBatch, phase);
+            //DrawEntity_Vanilla(spriteBatch, phase);
             //DrawEntity_Skia(spriteBatch, phase);
             //DrawEntity_MSDF(spriteBatch, phase);
+            DrawEntity_ImGUI(spriteBatch, phase);
         }
 
        
+        protected void DrawEntity_ImGUI(SpriteBatch spriteBatch, DrawPhase phase)
+        {
+           
+            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
+            //UIManager manager = UIManager.GetInstance();
+
+            System.Numerics.Vector2 screenSize = new System.Numerics.Vector2(spriteBatch.GraphicsDevice.Viewport.Width, spriteBatch.GraphicsDevice.Viewport.Height);
+
+            // Push a clipping rectangle to cover the entire screen (or any other desired size)
+            //ImGui.PushClipRect(new System.Numerics.Vector2(0, 0), screenSize, false);
+
+            // Draw your text at the desired position
+            ImGui.SetCursorPos(new System.Numerics.Vector2(_position.X,_position.Y));
+            ImGui.Text(Text);
+
+            // Pop the previously defined clipping rectangle
+            //ImGui.PopClipRect();
+
+
+            // call base draw function
+            base.DrawEntity(spriteBatch, phase);
+        }
+
         protected void DrawEntity_MSDF(SpriteBatch spriteBatch, DrawPhase phase)
         {
 
-            /*
-            // get fill color
-            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
-
-            // draw text itself
-            spriteBatch.DrawString(_currFont, _processedText, _position, fillCol,
-                0, _fontOrigin, _actualScale, SpriteEffects.None, 0.5f);
-            */
+        
             Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
             MonoMSDFManager manager = MonoMSDFManager.GetInstance();
             manager.DrawText(null, Text, _position - _fontOrigin, fillCol, Color.Black);

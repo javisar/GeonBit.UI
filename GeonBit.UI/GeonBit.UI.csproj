@@ -27,6 +27,7 @@
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\ImGUIManager\ImGUIManager.csproj" />
     <ProjectReference Include="..\..\..\MonoMSDFManager\MonoMSDFManager.csproj" />
     <ProjectReference Include="..\..\..\SkiaTextRendererManager\SkiaTextRendererManager.csproj" />
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.DesktopGL.csproj" />
