@@ -17,6 +17,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using GeonBit.UI.DataTypes;
 using System.Text;
+using SkiaTextRenderer;
+using MonoMSDF;
 
 namespace GeonBit.UI.Entities
 {
@@ -542,7 +544,61 @@ namespace GeonBit.UI.Entities
         /// </summary>
         /// <param name="spriteBatch">Sprite batch to draw on.</param>
         /// <param name="phase">The phase we are currently drawing.</param>
+        /// 
         override protected void DrawEntity(SpriteBatch spriteBatch, DrawPhase phase)
+        {
+            DrawEntity_Vanilla(spriteBatch, phase);
+            //DrawEntity_Skia(spriteBatch, phase);
+            //DrawEntity_MSDF(spriteBatch, phase);
+        }
+
+       
+        protected void DrawEntity_MSDF(SpriteBatch spriteBatch, DrawPhase phase)
+        {
+
+            /*
+            // get fill color
+            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
+
+            // draw text itself
+            spriteBatch.DrawString(_currFont, _processedText, _position, fillCol,
+                0, _fontOrigin, _actualScale, SpriteEffects.None, 0.5f);
+            */
+            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
+            MonoMSDFManager manager = MonoMSDFManager.GetInstance();
+            manager.DrawText(null, Text, _position - _fontOrigin, fillCol, Color.Black);
+
+
+
+            // call base draw function
+            base.DrawEntity(spriteBatch, phase);
+        }
+
+        Texture2D textTexture;
+
+        protected void DrawEntity_Skia(SpriteBatch spriteBatch, DrawPhase phase)
+        {
+            /*
+            // get fill color
+            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
+
+            // draw text itself
+            spriteBatch.DrawString(_currFont, _processedText, _position, fillCol,
+                0, _fontOrigin, _actualScale, SpriteEffects.None, 0.5f);
+            */
+            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
+
+            if (textTexture== null)
+            {                
+                textTexture = SkiaTextRendererManager.GetDrawTexture(spriteBatch.GraphicsDevice, Text, 16, TextFormatFlags.Default);
+            }
+            spriteBatch.Draw(textTexture, _position- _fontOrigin, fillCol);
+
+
+            // call base draw function
+            base.DrawEntity(spriteBatch, phase);
+        }
+        protected void DrawEntity_Vanilla(SpriteBatch spriteBatch, DrawPhase phase)
         {
             // update processed text if needed
             if (_processedText == null)
