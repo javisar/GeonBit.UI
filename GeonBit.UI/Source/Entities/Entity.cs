@@ -185,6 +185,19 @@ namespace GeonBit.UI.Entities
         /// </summary>
         internal bool _hiddenInternalEntity = false;
 
+        public bool IsHiddenInternalEntity
+        {
+            get
+            {
+                return _hiddenInternalEntity;
+            }
+            set
+            {
+                _hiddenInternalEntity = value;
+            }
+        }
+
+
         /// <summary>
         /// A special size used value to use when you want to get the entity default size.
         /// </summary>
