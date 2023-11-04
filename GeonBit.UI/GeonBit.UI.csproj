@@ -5,6 +5,7 @@
     <RollForward>Major</RollForward>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
+	  <Configurations>Debug;Release;DebugWithContent</Configurations>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -22,10 +23,12 @@
     <EmbeddedResource Include="Icon.ico" />
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)'=='DebugWithContent'">
     <PackageReference Include="MonoGame.Content.Builder.Task.Compute" Version="3.8.2" />
-    <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Runtime" Version="4.3.1" />
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\MonoMSDFManager\MonoMSDFManager.csproj" />
     <ProjectReference Include="..\..\..\SkiaTextRendererManager\SkiaTextRendererManager.csproj" />
