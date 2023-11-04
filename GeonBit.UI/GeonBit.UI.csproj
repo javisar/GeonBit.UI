@@ -26,6 +26,9 @@
   <ItemGroup Condition="'$(Configuration)'=='DebugWithContent'">
     <PackageReference Include="MonoGame.Content.Builder.Task.Compute" Version="3.8.2" />
   </ItemGroup>
+  	<PropertyGroup Condition="'$(Configuration)'=='DebugWithContent'">
+		<OutputPath>bin\Debug\</OutputPath>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="System.Runtime" Version="4.3.1" />
 	</ItemGroup>
