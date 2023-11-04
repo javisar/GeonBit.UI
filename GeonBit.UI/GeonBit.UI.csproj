@@ -23,7 +23,7 @@
     <EmbeddedResource Include="Icon.ico" />
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
-  <ItemGroup Condition="'$(Configuration)'=='DebugWithContent'">
+  <ItemGroup Condition="'$(Configuration)'=='DebugWithContent' Or '$(Configuration)'=='Release'">
     <PackageReference Include="MonoGame.Content.Builder.Task.Compute" Version="3.8.2" />
   </ItemGroup>
   	<PropertyGroup Condition="'$(Configuration)'=='DebugWithContent'">
