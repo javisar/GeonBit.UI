@@ -17,8 +17,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using GeonBit.UI.DataTypes;
 using System.Text;
-using SkiaTextRenderer;
-using MonoMSDF;
 
 namespace GeonBit.UI.Entities
 {
@@ -552,18 +550,11 @@ namespace GeonBit.UI.Entities
             //DrawEntity_MSDF(spriteBatch, phase);
         }
 
-       
+       /*
         protected void DrawEntity_MSDF(SpriteBatch spriteBatch, DrawPhase phase)
         {
 
-            /*
-            // get fill color
-            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
-
-            // draw text itself
-            spriteBatch.DrawString(_currFont, _processedText, _position, fillCol,
-                0, _fontOrigin, _actualScale, SpriteEffects.None, 0.5f);
-            */
+      
             Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
             MonoMSDFManager manager = MonoMSDFManager.GetInstance();
             manager.DrawText(null, Text, _position - _fontOrigin, fillCol, Color.Black);
@@ -578,14 +569,7 @@ namespace GeonBit.UI.Entities
 
         protected void DrawEntity_Skia(SpriteBatch spriteBatch, DrawPhase phase)
         {
-            /*
-            // get fill color
-            Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
-
-            // draw text itself
-            spriteBatch.DrawString(_currFont, _processedText, _position, fillCol,
-                0, _fontOrigin, _actualScale, SpriteEffects.None, 0.5f);
-            */
+         
             Color fillCol = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
 
             if (textTexture== null)
@@ -598,6 +582,7 @@ namespace GeonBit.UI.Entities
             // call base draw function
             base.DrawEntity(spriteBatch, phase);
         }
+       */
         protected void DrawEntity_Vanilla(SpriteBatch spriteBatch, DrawPhase phase)
         {
             // update processed text if needed
